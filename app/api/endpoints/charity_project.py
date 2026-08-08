@@ -30,7 +30,7 @@ async def get_all_charity_projects(session: SessionDep):
 
 @router.post('/', response_model=CharityProjectDB,
              response_model_exclude_none=True,
-             dependencies=[Depends(current_superuser)],
+             dependencies=[Depends(current_superuser)]
              )
 async def create_new_charity_project(charity_project: CharityProjectCreate,
                                      session: SessionDep):
@@ -54,7 +54,7 @@ async def create_new_charity_project(charity_project: CharityProjectCreate,
 
 @router.patch('/{project_id}', response_model=CharityProjectDB,
               response_model_exclude_none=True,
-              dependencies=[Depends(current_superuser)],)
+              dependencies=[Depends(current_superuser)])
 async def partially_update_charity_project(
         project_id: int,
         obj_in: CharityProjectUpdate,
@@ -90,7 +90,7 @@ async def partially_update_charity_project(
 
 @router.delete('/{project_id}', response_model=CharityProjectDB,
                response_model_exclude_none=True,
-               dependencies=[Depends(current_superuser)],
+               dependencies=[Depends(current_superuser)]
                )
 async def remove_charity_project(
         project_id: int,

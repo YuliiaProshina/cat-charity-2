@@ -18,7 +18,7 @@ SessionDep = Annotated[AsyncSession, Depends(get_async_session)]
 
 @router.get('/', response_model=list[DonationFullInfoDB],
             response_model_exclude_none=True,
-            dependencies=[Depends(current_superuser)],)
+            dependencies=[Depends(current_superuser)])
 async def get_all_donations(session: SessionDep):
     """Только для суперюзеров."""
     donations = await donation_crud.get_multi(session=session)
@@ -40,7 +40,7 @@ async def create_donation(donation: DonationCreate, session: SessionDep,
 
 @router.get('/my', response_model=list[DonationDB],
             response_model_exclude={'user_id'},
-            response_model_exclude_none=True,)
+            response_model_exclude_none=True)
 async def get_my_donations(session: SessionDep,
                            user: Annotated[User, Depends(current_user)]):
     """Получает список всех донатов для текущего пользователя."""
