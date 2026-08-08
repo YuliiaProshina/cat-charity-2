@@ -3,8 +3,8 @@ from typing import Optional
 
 from pydantic import BaseModel, ConfigDict, Field, PositiveInt
 
-from app.core.constants import (DESCRIPTION_MIN_LENGTH, STRING_MIN_LENGTH,
-                                STRING_MAX_LENGTH)
+from app.core.constants import (DESCRIPTION_MIN_LENGTH, STRING_MAX_LENGTH,
+                                STRING_MIN_LENGTH)
 
 
 class CharityProjectBase(BaseModel):
